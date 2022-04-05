@@ -138,7 +138,7 @@ def action_set_name(update: Update, context: CallbackContext) -> int:
 
     reply_text = (
         f"Приветы, {user.real_name}! Напиши, как тебя найти в VK "
-        f"(надо отправить ссылку в формате: https://vk.com/math_mech).\n"
+        f"(имя профиля или ссылка, например, https://vk.com/math_mech).\n"
         f"Не забудь проверить, что у тебя открытый профиль!"
     )
     update.message.reply_text(
@@ -156,7 +156,8 @@ def action_set_name_callback(update: Update, context: CallbackContext) -> int:
     user.save()
 
     reply_text = (
-        f"Приветы, {user.real_name}! Сначала скинь, как тебя найти в VK "
+        f"Приветы, {user.real_name}! Сначала скинь, как тебя найти в VK \n"
+        f"(имя профиля или ссылка, например, https://vk.com/math_mech)"
         f"Не забудь проверить, что у тебя открытый профиль!"
     )
 
@@ -177,8 +178,8 @@ def action_set_vk(update: Update, context: CallbackContext) -> Optional[int]:
 
     vk_link = helper.get_vk(text)
     if not vk_link:
-        replay_text = "Хах, это не VK! Cкинь, как тебя найти в VK (имя профиля или ссылка, " \
-                      f"например, https://vk.com/badfest/)\n" \
+        replay_text = "Хах, это не VK! Cкинь, как тебя найти в VK" \
+                      " (имя профиля или ссылка, например, https://vk.com/math_mech)\n " \
                       f"Не забудь проверить, что у тебя открытый профиль!"
         update.message.reply_text(
             replay_text, reply_markup=ReplyKeyboardMarkup(
