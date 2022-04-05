@@ -5,7 +5,7 @@ from utils import helper
 
 class Settings:
 
-    IS_TEST = True
+    IS_TEST = False
 
     @staticmethod
     def max_invites():
