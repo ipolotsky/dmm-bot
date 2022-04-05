@@ -137,7 +137,8 @@ def action_set_name(update: Update, context: CallbackContext) -> int:
     user.save()
 
     reply_text = (
-        f"Приветы, {user.real_name}! Сначала скинь, как тебя найти в VK"
+        f"Приветы, {user.real_name}! Напиши, как тебя найти в VK "
+        f"(надо отправить ссылку в формате: https://vk.com/math_mech).\n"
         f"Не забудь проверить, что у тебя открытый профиль!"
     )
     update.message.reply_text(
@@ -155,7 +156,7 @@ def action_set_name_callback(update: Update, context: CallbackContext) -> int:
     user.save()
 
     reply_text = (
-        f"Приветы, {user.real_name}! Сначала скинь, как тебя найти в VK"
+        f"Приветы, {user.real_name}! Сначала скинь, как тебя найти в VK "
         f"Не забудь проверить, что у тебя открытый профиль!"
     )
 
