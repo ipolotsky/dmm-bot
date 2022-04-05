@@ -1,0 +1,11 @@
+version: "3"
+services:
+  bot:
+    image: mathmech/badfest-bot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - "./FB_CREDS.json:/opt/FB_CREDS.json"
+    env_file:
+      - .env

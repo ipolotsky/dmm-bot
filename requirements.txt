@@ -1,0 +1,6 @@
+python-telegram-bot==13.9
+emoji==1.2.0
+Pillow==8.2.0
+PyQRCode==1.2.1
+pypng==0.0.20
+firebase-admin==5.2.0
