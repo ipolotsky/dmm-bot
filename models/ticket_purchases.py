@@ -90,7 +90,7 @@ class TicketPurchase(BasePurchase):
         self._data["ticket_description"] = ticket.description
 
     def pretty_html(self, index: int = None):
-        return f"Билет '{self.ticket_name}'!\n" \
+        return f"{self.ticket_name}!\n" \
                f"Стоимость: {self.total_amount / 100}р.\n" \
                f"Дата покупки: {self.created} (UTC)"
 
@@ -159,7 +159,7 @@ class TicketPurchase(BasePurchase):
     @staticmethod
     def statistics():
         purchase_list = TicketPurchase.all()
-        groups = collections.defaultdict(list)
+        groups = collections.defaultdict(dict)
         groups["ДММ2022"] = {'count': 0, 'items': []}
         taxes = 0
         total = 0

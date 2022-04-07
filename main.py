@@ -268,7 +268,7 @@ def process_successful_ticket(update: Update, context: CallbackContext):
 
     for admin in User.admins():
         message = emojize(":money_bag:", use_aliases=True) + f" {user.real_name} ({user.username})" \
-                                                             f" купил(а) билет '{purchase.ticket_name}' за {purchase.total_amount / 100} р."
+                                                             f" купил(а) '{purchase.ticket_name}' за {purchase.total_amount / 100} р."
         context.bot.send_message(chat_id=admin.id, text=message)
 
     return READY_DASHBOARD
@@ -464,14 +464,11 @@ def admin_function_check_code(update: Update, code: str):
     try:
         ticket_purchase = TicketPurchase.get(code)
         if ticket_purchase.activated:
-            update.message.reply_text(f"УЖЕ ЗАРЕГИСТРИРОВАН! НЕ ПОДДАВАТЕСЬ НА РАЗГОВОРЫ С МОШЕННИКАМИ!\n\n" +
-                                      ticket_purchase.pretty_detailed_html())
+            update.message.reply_text(ticket_purchase.pretty_detailed_html())
         else:
             ticket_purchase.activated = datetime.now().timestamp()
             ticket_purchase.save()
-            update.message.reply_html(f"<b>ФУК ЕЕЕЕЕ! Успешно зареган!</b>\n\n"
-                                      f"Выдай участнику маску, попшикай на руки, скажи, что ковид и вот это вот все."
-                                      f"\n\n" +
+            update.message.reply_html(f"<b>ФУК ЕЕЕЕЕ! Успешно зареган!</b>\n\n" +
                                       ticket_purchase.pretty_detailed_html())
 
     except:
