@@ -310,10 +310,7 @@ def show_tickets(update: Update, context: CallbackContext):
 
     index = 1
     update.message.reply_html(
-        text="Выбирай билет и покупай прямо тут в телеграме (да, так уже можно, начиная с апреля этого года)\n"
-             "Продолжая покупку, ты соглашаешься с <a href='https://badbar.ru/policy'>"
-             "политикой конфеденциальности</a> и <a href='https://vk.com/@badfest-manifest'>прочей лабудой</a>,"
-             " которая нам, к сожалению, нужна:\n\n",
+        text="Выбирай билет и покупай прямо тут в телеграме\n",
         disable_web_page_preview=True)
 
     for ticket in Ticket.by_type(Ticket.PAID_TYPE):
@@ -328,7 +325,7 @@ def show_tickets(update: Update, context: CallbackContext):
             currency=currency, prices=prices,
             photo_url=ticket.photo, photo_width=500, photo_height=500, need_name=True,
             need_email=True, need_phone_number=True, max_tip_amount=2000000,
-            suggested_tip_amounts=[int(ticket.price * 10), int(ticket.price * 100), int(ticket.price * 300)]
+            suggested_tip_amounts=[int(ticket.price * 10), int(ticket.price * 100), int(ticket.price * 300), int(ticket.price * 500)]
         )
 
         index += 1
