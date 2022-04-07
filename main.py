@@ -133,6 +133,15 @@ def action_start(update: Update, context: CallbackContext) -> None:
 def action_set_name(update: Update, context: CallbackContext) -> int:
     user = User.get(update.effective_user.id)
     text = update.message.text
+
+    if not text or text == "":
+        replay_text = "Напиши, как тебя зовут"
+        update.message.reply_text(
+            replay_text, reply_markup=ReplyKeyboardMarkup(
+                get_default_keyboard_bottom(user),
+                resize_keyboard=True), disable_web_page_preview=True, )
+        return None
+
     user.real_name = text.strip()
     user.save()
 
@@ -153,6 +162,15 @@ def action_set_name_callback(update: Update, context: CallbackContext) -> int:
     user = User.get(update.effective_user.id)
     real_name = update.callback_query.data.split(':')[1]
     user.real_name = real_name.strip()
+
+    if not user.real_name or user.real_name == "":
+        replay_text = "Напиши, как тебя зовут"
+        update.message.reply_text(
+            replay_text, reply_markup=ReplyKeyboardMarkup(
+                get_default_keyboard_bottom(user),
+                resize_keyboard=True), disable_web_page_preview=True, )
+        return None
+
     user.save()
 
     reply_text = (
