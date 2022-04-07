@@ -116,7 +116,7 @@ class TicketPurchase(BasePurchase):
         text_img = Image.new('RGB', (ticket_width, 420), color=(44, 44, 212))
         d = ImageDraw.Draw(text_img)
         master_font = ImageFont.FreeTypeFont('fonts/HelveticaBlack.ttf', 60, encoding="utf-8")
-        d.text((50, 50), "DMM 2021 / 3-4 июля", fill=(255, 255, 255), font=master_font)
+        d.text((50, 50), "DMM 2022", fill=(255, 255, 255), font=master_font)
         slave_font = ImageFont.FreeTypeFont('fonts/arial.ttf', 40, encoding="utf-8")
         d.text((60, 130), 'Имя: ' + self.user.real_name, fill=(255, 255, 255), font=slave_font)
         d.text((60, 180), 'Тип: ' + self.ticket_name, fill=(255, 255, 255), font=slave_font)
