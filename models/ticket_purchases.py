@@ -160,7 +160,7 @@ class TicketPurchase(BasePurchase):
     def statistics():
         purchase_list = TicketPurchase.all()
         groups = collections.defaultdict(dict)
-        groups["ДММ2022"] = {'count': 0, 'items': []}
+        groups['Билет ДММ2022'] = {'count': 0, 'items': []}
         taxes = 0
         total = 0
         for obj in purchase_list:
